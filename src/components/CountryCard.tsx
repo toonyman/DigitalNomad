@@ -12,6 +12,26 @@ interface CountryCardProps {
     baseCurrency: string;
 }
 
+const ButtonLink = ({ href, children, className, variant = 'primary' }: { href?: string, children: React.ReactNode, className?: string, variant?: 'primary' | 'secondary' }) => {
+    if (!href) {
+        return (
+            <button disabled className={`${className} opacity-50 cursor-not-allowed`} title="Link not available">
+                {children}
+            </button>
+        );
+    }
+    return (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={className}
+        >
+            {children}
+        </a>
+    );
+};
+
 export default function CountryCard({ country, baseCurrency }: CountryCardProps) {
     const { rate, loading } = useExchangeRate(baseCurrency, country.currencyCode);
     const { t } = useLanguage();
@@ -111,13 +131,19 @@ export default function CountryCard({ country, baseCurrency }: CountryCardProps)
 
                 {/* Actions */}
                 <div className="grid grid-cols-2 gap-3 mt-auto">
-                    <button className="flex items-center justify-center gap-2 py-2.5 px-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-medium hover:opacity-90 transition-opacity">
+                    <ButtonLink
+                        href={country.applyUrl}
+                        className="flex items-center justify-center gap-2 py-2.5 px-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-medium hover:opacity-90 transition-opacity"
+                    >
                         {t.applyDetails}
-                    </button>
-                    <button className="flex items-center justify-center gap-2 py-2.5 px-4 bg-blue-500/10 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded-lg font-medium hover:bg-blue-500/20 dark:hover:bg-blue-500/30 transition-colors">
+                    </ButtonLink>
+                    <ButtonLink
+                        href={country.flightUrl || `https://www.google.com/travel/flights?q=flights+to+${country.name}`}
+                        className="flex items-center justify-center gap-2 py-2.5 px-4 bg-blue-500/10 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 rounded-lg font-medium hover:bg-blue-500/20 dark:hover:bg-blue-500/30 transition-colors"
+                    >
                         <Plane className="w-4 h-4" />
                         {t.checkFlights}
-                    </button>
+                    </ButtonLink>
                 </div>
             </div>
         </motion.div>

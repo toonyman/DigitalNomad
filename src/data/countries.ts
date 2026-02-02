@@ -8,6 +8,8 @@ export type Country = {
   benefits: string[];
   flagUrl: string;
   currencyCode: string;
+  applyUrl?: string;
+  flightUrl?: string;
 };
 
 export const countries: Country[] = [
@@ -21,6 +23,8 @@ export const countries: Country[] = [
     benefits: ['Beckham Law Tax Regime', 'High Standard of Living', 'Great Climate'],
     flagUrl: '🇪🇸',
     currencyCode: 'EUR',
+    applyUrl: 'https://prie.comercio.gob.es/en-us/Paginas/Teletrabajadores-caracter-internacional.aspx',
+    flightUrl: 'https://www.skyscanner.net/flights-to/es/cheap-flights-to-spain.html',
   },
   {
     id: 'portugal',
@@ -32,6 +36,8 @@ export const countries: Country[] = [
     benefits: ['NHR Tax Scheme', 'Affordable Cost of Living', 'Vibrant Expat Community'],
     flagUrl: '🇵🇹',
     currencyCode: 'EUR',
+    applyUrl: 'https://vistos.mne.gov.pt/en/national-visas/necessary-documentation/residence/digital-nomads',
+    flightUrl: 'https://www.skyscanner.net/flights-to/pt/cheap-flights-to-portugal.html',
   },
   {
     id: 'greece',
@@ -43,6 +49,8 @@ export const countries: Country[] = [
     benefits: ['50% Tax Break for 7 Years', 'Beautiful Islands', 'Rich History'],
     flagUrl: '🇬🇷',
     currencyCode: 'EUR',
+    applyUrl: 'https://www.mfa.gr/en/visas/visa-types/national-visas.html',
+    flightUrl: 'https://www.skyscanner.net/flights-to/gr/cheap-flights-to-greece.html',
   },
   {
     id: 'thailand-ltr',
@@ -54,6 +62,8 @@ export const countries: Country[] = [
     benefits: ['17% Flat Tax Rate', 'Low Cost of Living', 'World-Class Food'],
     flagUrl: '🇹🇭',
     currencyCode: 'THB',
+    applyUrl: 'https://ltr.boi.go.th/',
+    flightUrl: 'https://www.skyscanner.net/flights-to/th/cheap-flights-to-thailand.html',
   },
   {
     id: 'japan',
@@ -65,6 +75,8 @@ export const countries: Country[] = [
     benefits: ['Safe & Clean', 'Modern Infrastructure', 'Unique Culture'],
     flagUrl: '🇯🇵',
     currencyCode: 'JPY',
+    applyUrl: 'https://www.mofa.go.jp/ca/f_n/page22e_001033.html',
+    flightUrl: 'https://www.skyscanner.net/flights-to/jp/cheap-flights-to-japan.html',
   },
   {
     id: 'mexico',
@@ -76,6 +88,8 @@ export const countries: Country[] = [
     benefits: ['Close to USA', 'Rich Culture & Food', 'Affordable'],
     flagUrl: '🇲🇽',
     currencyCode: 'MXN',
+    applyUrl: 'https://consulmex.sre.gob.mx/washington/index.php/ligavisos/15-visas/182-visa-de-residencia-temporal',
+    flightUrl: 'https://www.skyscanner.net/flights-to/mx/cheap-flights-to-mexico.html',
   },
   {
     id: 'costa-rica',
@@ -87,6 +101,8 @@ export const countries: Country[] = [
     benefits: ['Income Tax Exemption', 'Pura Vida Lifestyle', 'Biodiversity'],
     flagUrl: '🇨🇷',
     currencyCode: 'CRC',
+    applyUrl: 'https://migracion.go.cr/Paginas/Categor%C3%ADa-Migratorias-%28Extranjeros%29/Subcategor%C3%ADa-de-Estancia.aspx',
+    flightUrl: 'https://www.skyscanner.net/flights-to/cr/cheap-flights-to-costa-rica.html',
   },
   {
     id: 'italy',
@@ -98,5 +114,7 @@ export const countries: Country[] = [
     benefits: ['90% Tax Exemption (New Regime)', 'Culinary Heaven', 'Cultural Heritage'],
     flagUrl: '🇮🇹',
     currencyCode: 'EUR',
+    applyUrl: 'https://vistoperitalia.esteri.it/home/en',
+    flightUrl: 'https://www.skyscanner.net/flights-to/it/cheap-flights-to-italy.html',
   },
 ];
