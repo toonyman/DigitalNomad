@@ -33,7 +33,11 @@ const ButtonLink = ({ href, children, className, variant = 'primary' }: { href?:
 };
 
 export default function CountryCard({ country, baseCurrency }: CountryCardProps) {
+    // Rate for displaying "1 YourCurrency = X LocalCurrency" (Existing logic)
     const { rate, loading } = useExchangeRate(baseCurrency, country.currencyCode);
+
+    // Rate for converting USD Income Requirement to Your Currency
+    const { rate: incomeRate } = useExchangeRate('USD', baseCurrency);
     const { t } = useLanguage();
 
     return (
@@ -78,7 +82,11 @@ export default function CountryCard({ country, baseCurrency }: CountryCardProps)
                             <span className="text-sm">{t.minIncome}</span>
                         </div>
                         <span className="text-lg font-bold text-gray-900 dark:text-white">
-                            ${country.incomeRequirement.toLocaleString()}
+                            {/* Showing USD if baseCurrency is USD, or if loading. If converted, show converted amount */}
+                            {!incomeRate || baseCurrency === 'USD'
+                                ? `$${country.incomeRequirement.toLocaleString()}`
+                                : `${(country.incomeRequirement * incomeRate).toLocaleString(undefined, { maximumFractionDigits: 0 })} ${baseCurrency}`
+                            }
                         </span>
                     </div>
 
