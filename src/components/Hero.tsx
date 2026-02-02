@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Search, MapPin, DollarSign } from 'lucide-react';
+import { Search, MapPin, DollarSign, Euro, PoundSterling, JapaneseYen, Info } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ThemeToggle } from './ThemeToggle';
 import { sourceCountries } from '@/data/sourceCountries';
@@ -17,9 +17,19 @@ interface HeroProps {
 
 export default function Hero({ income, setIncome, nationality, setNationality }: HeroProps) {
     const { t } = useLanguage();
-    const selectedCountry = sourceCountries.find(c => c.name === nationality);
     const currency = selectedCountry ? selectedCountry.currency : 'USD';
     const incomeLabel = t.monthlyIncome.replace('USD', currency);
+
+    const getCurrencyIcon = (curr: string) => {
+        switch (curr) {
+            case 'EUR': return <Euro className="w-5 h-5 text-gray-500 dark:text-gray-400" />;
+            case 'GBP': return <PoundSterling className="w-5 h-5 text-gray-500 dark:text-gray-400" />;
+            case 'JPY': return <JapaneseYen className="w-5 h-5 text-gray-500 dark:text-gray-400" />;
+            case 'CNY': return <JapaneseYen className="w-5 h-5 text-gray-500 dark:text-gray-400" />; // Often uses Yen symbol
+            case 'KRW': return <span className="w-5 h-5 flex items-center justify-center text-lg font-bold text-gray-500 dark:text-gray-400">₩</span>;
+            default: return <DollarSign className="w-5 h-5 text-gray-500 dark:text-gray-400" />;
+        }
+    };
 
     return (
         <div className="relative w-full h-[600px] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
@@ -76,7 +86,7 @@ export default function Hero({ income, setIncome, nationality, setNationality }:
 
                     {/* Income Input */}
                     <div className="flex items-center gap-3 w-full md:w-1/2 bg-gray-100/50 dark:bg-gray-900/40 rounded-xl px-4 py-3 border border-transparent focus-within:border-blue-500/50 transition-colors">
-                        <DollarSign className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                        {getCurrencyIcon(currency)}
                         <div className="flex flex-col items-start text-left w-full gap-0.5">
                             <label className="text-xs uppercase tracking-wide text-gray-500 font-bold">{incomeLabel}</label>
                             <input
