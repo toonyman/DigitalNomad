@@ -17,6 +17,9 @@ interface HeroProps {
 
 export default function Hero({ income, setIncome, nationality, setNationality }: HeroProps) {
     const { t } = useLanguage();
+    const selectedCountry = sourceCountries.find(c => c.name === nationality);
+    const currency = selectedCountry ? selectedCountry.currency : 'USD';
+    const incomeLabel = t.monthlyIncome.replace('USD', currency);
 
     return (
         <div className="relative w-full h-[600px] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
@@ -75,7 +78,7 @@ export default function Hero({ income, setIncome, nationality, setNationality }:
                     <div className="flex items-center gap-3 w-full md:w-1/2 bg-gray-100/50 dark:bg-gray-900/40 rounded-xl px-4 py-3 border border-transparent focus-within:border-blue-500/50 transition-colors">
                         <DollarSign className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                         <div className="flex flex-col items-start text-left w-full gap-0.5">
-                            <label className="text-xs uppercase tracking-wide text-gray-500 font-bold">{t.monthlyIncome}</label>
+                            <label className="text-xs uppercase tracking-wide text-gray-500 font-bold">{incomeLabel}</label>
                             <input
                                 type="number"
                                 value={income || ''}
