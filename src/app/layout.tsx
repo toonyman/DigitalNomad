@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     type: 'website',
   },
   verification: {
-    google: 'YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE',
+    google: 'OAv4N25-_EylIfm5Jo5lZ5ldSv2O8fp0g8ipHl3tulQ',
   },
   other: {
     'geo.region': 'Global',
