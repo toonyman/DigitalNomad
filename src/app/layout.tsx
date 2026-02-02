@@ -34,6 +34,7 @@ export const metadata: Metadata = {
     'geo.placename': 'Global',
     'geo.position': '0;0',
     'ICBM': '0, 0',
+    'google-adsense-account': 'ca-pub-7644009675634803',
   }
 };
 
@@ -48,6 +49,12 @@ export default function RootLayout({
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-2YPYPL25BY"
           strategy="afterInteractive"
+        />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7644009675634803"
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
